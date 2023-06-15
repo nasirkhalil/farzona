@@ -1,0 +1,28 @@
+| Domain: archcorner.org
+
+| Ip: 67.227.231.58 (n)
+
+| HasCgi: y
+
+| UserName: archcorner
+| Password: arch2019
+
+
+
+database “archcorn_archi”.
+user named “archcorn_archi”.
+password WOfh5hklLmCI
+
+
+
+
+
+arabicwe_archcorner
+arabicwe_archcor
+password WOfh5hklLmCI
+
+
+
+database “tyresme_archi”.
+named “tyresme_archi”.
+password WOfh5hklLmCI

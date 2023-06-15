@@ -1,0 +1,35 @@
+[05-Jan-2020 17:47:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function imagecreatefromjpeg() in /home/archcorner/public_html/functions/resize-functions.php:48
+Stack trace:
+#0 /home/archcorner/public_html/functions/resize-functions.php(30): openImage('/home/archcorne...')
+#1 /home/archcorner/public_html/functions/resize-functions.php(67): Init('/home/archcorne...')
+#2 /home/archcorner/public_html/multiuploader/uploadgallery.php(19): resizeImage('/home/archcorne...', 253, 253, 'crop')
+#3 {main}
+  thrown in /home/archcorner/public_html/functions/resize-functions.php on line 48
+[05-Jan-2020 17:56:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function imagecreatefromjpeg() in /home/archcorner/public_html/functions/resize-functions.php:48
+Stack trace:
+#0 /home/archcorner/public_html/functions/resize-functions.php(30): openImage('/home/archcorne...')
+#1 /home/archcorner/public_html/functions/resize-functions.php(67): Init('/home/archcorne...')
+#2 /home/archcorner/public_html/multiuploader/uploadgallery.php(19): resizeImage('/home/archcorne...', 253, 253, 'crop')
+#3 {main}
+  thrown in /home/archcorner/public_html/functions/resize-functions.php on line 48
+[05-Jan-2020 17:56:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function imagecreatefromjpeg() in /home/archcorner/public_html/functions/resize-functions.php:48
+Stack trace:
+#0 /home/archcorner/public_html/functions/resize-functions.php(30): openImage('/home/archcorne...')
+#1 /home/archcorner/public_html/functions/resize-functions.php(67): Init('/home/archcorne...')
+#2 /home/archcorner/public_html/multiuploader/uploadgallery.php(19): resizeImage('/home/archcorne...', 253, 253, 'crop')
+#3 {main}
+  thrown in /home/archcorner/public_html/functions/resize-functions.php on line 48
+[05-Jan-2020 17:59:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function imagecreatefromjpeg() in /home/archcorner/public_html/functions/resize-functions.php:48
+Stack trace:
+#0 /home/archcorner/public_html/functions/resize-functions.php(30): openImage('/home/archcorne...')
+#1 /home/archcorner/public_html/functions/resize-functions.php(67): Init('/home/archcorne...')
+#2 /home/archcorner/public_html/multiuploader/uploadgallery.php(19): resizeImage('/home/archcorne...', 253, 253, 'crop')
+#3 {main}
+  thrown in /home/archcorner/public_html/functions/resize-functions.php on line 48
+[05-Jan-2020 18:00:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function imagecreatefromjpeg() in /home/archcorner/public_html/functions/resize-functions.php:48
+Stack trace:
+#0 /home/archcorner/public_html/functions/resize-functions.php(30): openImage('/home/archcorne...')
+#1 /home/archcorner/public_html/functions/resize-functions.php(67): Init('/home/archcorne...')
+#2 /home/archcorner/public_html/multiuploader/uploadgallery.php(19): resizeImage('/home/archcorne...', 253, 253, 'crop')
+#3 {main}
+  thrown in /home/archcorner/public_html/functions/resize-functions.php on line 48
