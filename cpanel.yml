@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/bb00vw9vl0es/farzona.com
+    - /bin/cp -r * $DEPLOYPATH
