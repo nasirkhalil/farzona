@@ -1,10 +1,10 @@
 <?
 ob_start();
 session_start();
-error_reporting(1);
-ini_set('display_errors','On');
-ini_set('error_reporting',E_ALL);
-error_reporting(E_ALL);
+error_reporting(0);
+// ini_set('display_errors','On');
+// ini_set('error_reporting',E_ALL);
+// error_reporting(E_ALL);
 include_once("../conn.php");
 date_default_timezone_set('Asia/Karachi');
 $conf = new config();
