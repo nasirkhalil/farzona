@@ -42,7 +42,7 @@ class config {
 	
 	/*var $smtphost="mail.vertilex.ae";
     var $smtpuser="medline@vertilex.ae";
-    var $smtppass="!QAZXSW@#$";*/
+    var $smtppass="!QAZXSW@#$";*/ 
     
 }
 ?>
