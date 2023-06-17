@@ -37,7 +37,7 @@ if($_SESSION['admins']['ID'] == ""){
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" style="display:none">
           <!-- Small boxes (Stat box) -->
           <div class="row">
           <? $cmsdashboard = $general->getAll(" content_cms where origin_cms = 'menu' and parent_cms = 0 order by name_cms "); ?>            
