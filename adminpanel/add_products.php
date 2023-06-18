@@ -84,29 +84,32 @@ $prdtype = $_GET['type']; ?>
                 <input type="hidden" name="pre_created_at" value="<?php echo date('Y-m-d G:i:s') ?>">
                 <input type="hidden" name="pre_updated_at" value="<?php echo date('Y-m-d G:i:s') ?>">
                 <div class="box-body">
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-4">
                     <label>Parent Category</label>
                     <?php echo $general->draw_pull_down_tree('pre_idcat_prd', $general->get_category_tree('category_cat', 'parent_cat', 'id_cat', 'name_cat', ""), 'category_cat', '', 'class="form-control"'); ?>
                   </div>
-
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-2">
+                    <label>SKU</label>
+                    <input type="text" class="form-control" name="pre_sku" />
+                  </div>
+                  <div class="col-xs-12 col-md-6">
                     <label>Name</label>
                     <input type="text" class="form-control" name="pre_name_prd" />
                   </div>
 
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-4">
                     <label>Meta Title</label>
                     <input type="text" class="form-control" name="pre_metatitle_prd" />
                   </div>
 
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-4">
                     <label>Meta Keywords</label>
                     <input type="text" class="form-control" name="pre_metatag_prd" />
                   </div>
 
 
 
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-4">
                     <label>Meta Description</label>
                     <input type="text" class="form-control" name="pre_metadescription_prd" />
                   </div>
@@ -125,17 +128,17 @@ $prdtype = $_GET['type']; ?>
                     <textarea class="ckeditor" name="pre_details_prd" rows="5" cols="10"></textarea>
                   </div>
 
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-4">
                     <label>Thumb Image</label>
                     <input type="file" class="form-control" name="pre_thumb_name_prd" />
                   </div>
 
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-4">
                     <label>Thumb Title</label>
                     <input type="text" class="form-control" name="pre_thumb_title_prd" />
                   </div>
 
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-4">
                     <label>Thumb Alt</label>
                     <input type="text" class="form-control" name="pre_thumb_alt_prd" />
                   </div>
@@ -218,24 +221,36 @@ $prdtype = $_GET['type']; ?>
                       <label>Arabic Thumb Alt</label>
                       <input type="text" class="form-control" name="pre_thumb_altar_prd" />
                     </div>
-                  <? } ?>
-                  <div class="col-xs-4">
-                    <label>Status</label>
-                    <select class="form-control" name="pre_size_id">
+                  <? } ?><br>
+                  <div class="col-xs-12 col-md-2">
+                    <label>Size System</label>
+                    <select class="form-control" name="pre_size_id" id="pre_size_id">
+                      <option>--Select Size--</option>
                     <?php foreach($sizes as $key => $size){?>    
-                      <option value="<?php echo $size['name']?>"><?php echo $size['name']?></option>
+                      <option value="<?php echo $size['id']?>"><?php echo $size['name']?></option>
                     <?php } ?>
                     </select>
                   </div>
+                  <div class="col-xs-12 col-md-10" id="size_content">
+                      
+                  </div>
                   <div class="clearfix"></div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-md-2">
+                    <label>Cost Price</label>
+                    <input type="text" class="form-control" name="pre_price_prd" />
+                  </div>
+                  <div class="col-xs-12 col-md-2">
+                    <label>Sale Price</label>
+                    <input type="text" class="form-control" name="pre_sale_price" />
+                  </div>
+                  <!-- <div class="col-xs-6 col-md-4">
                     <label>Show on Home</label>
                     <select class="form-control" name="pre_onmain_prd">
                       <option value="Yes">Yes</option>
                       <option value="No">No</option>
                     </select>
-                  </div>
-                  <div class="col-xs-4">
+                  </div> -->
+                  <div class="col-xs-6 col-md-4">
                     <label>Status</label>
                     <select class="form-control" name="pre_status_prd">
                       <option value="1">Active</option>
@@ -243,7 +258,7 @@ $prdtype = $_GET['type']; ?>
                     </select>
                   </div>
 
-                  <div class="col-xs-4">
+                  <div class="col-xs-6 col-md-4">
                     <label>Order</label>
                     <input type="text" class="form-control" name="pre_order_prd" />
                   </div>
@@ -265,5 +280,20 @@ $prdtype = $_GET['type']; ?>
 
   <?php include "inc_scripts.php"; ?>
 </body>
+<script>
+$(document).on('change','#pre_size_id',function(){
+  var size_id = $(this).val();
+  // alert(size_id);
+  $.ajax({
+    type: "POST",
+    url: 'ajax_product_size.php',
+    data: { size_id:size_id },
+    // dataType: "application/json",
+    success: function (response) {
+      $('#size_content').html(response);
+    }
+  });
+});  
+</script>
 
 </html>

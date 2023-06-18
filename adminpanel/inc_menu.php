@@ -39,7 +39,7 @@
               </ul>
             </li>
             
-            <!-- CONCEPTS MANAGEMENT -->
+            <!-- Product MANAGEMENT -->
             <li class="treeview <? if(stristr($_SERVER['PHP_SELF'],"_products.php")){ echo "active";}; ?>">
               <a href="#">
                 <i class="fa fa-umbrella"></i>

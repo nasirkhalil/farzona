@@ -474,9 +474,9 @@ class general extends DBAccess
 				$inslink = "INSERT INTO link_lk(links_lk,table_lk,idtab_lk) values ('$cmsurl','$tab','$recnum')";
 				$this->CustomModify($inslink);
 			}
-			
-			
-			
+			if( $tab == "product_prd" && $_REQUEST['pre_size_id'] > 0 ){
+				$this->addProductSize($recnum,$_REQUEST['pre_size_id']);
+			}
 			$this->msg = "Data added successfully.";
 			return true;
 		}else{
@@ -485,6 +485,15 @@ class general extends DBAccess
 			
 		}
 		
+	}
+	function addProductSize($product_id,$size_id){
+		$data = $this->getAll("size_details WHERE size_id =".$size_id);
+		if( is_array($data) && count($data) > 0 ){
+			foreach($data as $key => $row){
+			   $q = "INSERT INTO product_sizes(product_id,size_id,size_detail_id) VALUES($product_id,$size_id,".$row['id'].")";
+			   $this->CustomModify($q);
+			}
+		}
 	}
 	
 	// adminpanel updation function
