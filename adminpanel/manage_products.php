@@ -90,7 +90,15 @@ $optbyid = $general->getAll(" product_prd order by order_prd ");
 				} ?>    
                   <h3 class="box-title" style="float:right !important;"><a href="add_<?=$pagetype?>.php">Add Product</a></h3>
                 </div><!-- /.box-header -->
+               
                 <div class="box-body table-responsive">
+                <div class="btn-group col-md-offset-4" role="group" aria-label="Basic outlined example">
+                  <a href="?status=1"><button type="button" class="btn  <?=($_GET['status']==1) ? 'btn-info' : 'btn-default'?>">Live</button></a>
+                  <a href="?status=2"><button type="button" class="btn  <?=($_GET['status']==2) ? 'btn-info' : 'btn-default'?>">Pause</button></a>
+                  <a href="?status=3"><button type="button" class="btn  <?=($_GET['status']==3) ? 'btn-info' : 'btn-default'?>">Soldout</button></a>
+                  <a href="?status=4"><button type="button" class="btn  <?=($_GET['status']==4) ? 'btn-info' : 'btn-default'?>">Upcomming</button></a>
+                  <a href="?status=5"><button type="button" class="btn  <?=($_GET['status']==5) ? 'btn-info' : 'btn-default'?>">Discontinue</button></a>
+                </div>
                 <? if(is_array($optbyid)){ ?>
                   <form id="frm" name="manageform" method="post" action="">
                   <table id="example1" class="table table-bordered table-striped">
@@ -124,10 +132,28 @@ $optbyid = $general->getAll(" product_prd order by order_prd ");
                             <!--gallery-->
                             <a href="manage_prd_gallery.php?cid=<?php echo base64_encode($optbyid[$d]['id_prd'])?>" target="_self" title="Gallery"><img src="dist/img/icons/addimage.png" alt="Edit" /></a>
                             
-                            <!--Edit-->
-                            <a href="update_<?=$pagetype?>.php?id=<?php echo base64_encode($optbyid[$d]['id_prd'])?>" target="_self" title="Edit"><img src="dist/img/icons/pencil.png" alt="Edit" /></a>
-                            <!--Delete-->
-                            <a href="#" class="delete" id="<? echo $optbyid[$d]['id_prd'];?>"><img src="dist/img/icons/cross.png" alt="Delete" /></a>
+                            <!--Edit
+                            <a href="update_<?=$pagetype?>.php?id=<?php echo base64_encode($optbyid[$d]['id_prd'])?>" target="_self" title="Edit"><img src="dist/img/icons/pencil.png" alt="Edit" /></a>-->
+                            <!--Delete
+                            <a href="#" class="delete" id="<? echo $optbyid[$d]['id_prd'];?>"><img src="dist/img/icons/cross.png" alt="Delete" /></a>-->
+                            <!-- action dropdown start -->
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-default">Edit</button>
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span class="caret"></span>
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a href="">Edit</a></li>
+                                  <li><a href="#">Copy Listing</a></li>
+                                  <li><a href="#" class="delete" id="<? echo $optbyid[$d]['id_prd'];?>">Delete Listing</a></li>
+                                  <li><a href="#">Listing History</a></li>
+                                  <li><a href="#">View Activity</a></li>
+                                  <li><a href="#">Print Label</a></li>
+                                  <li><a href="#">Discontinue</a></li>
+                                </ul>
+                              </div>
+                            <!-- action dropdown end -->
                             </td>
                         </tr>
                     <? } ?>  

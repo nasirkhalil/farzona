@@ -1539,16 +1539,8 @@ function test_input($data)
 						
 					}
 				}
-				// delete its colors
-				$this->CustomModify("delete from prdcolor_pc where idprd_pc='".$_GET['id']."' ");
-				// delete its sizes
-				$this->CustomModify("delete from prdsize_ps where idprd_ps='".$_GET['id']."' ");
-				
-				// delete its events
-				$this->CustomModify("delete from prdevent_pe where idprd_pe='".$_GET['id']."' ");
-				
 				// delete its prices
-				$this->CustomModify("delete from prdprices_pp where idprd_pp='".$_GET['id']."' ");
+				$this->CustomModify("delete from product_sizes where product_id='".$_GET['id']."' ");
 			}
 			
 			if($tab=="order_ord"){

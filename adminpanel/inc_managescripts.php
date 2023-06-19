@@ -41,7 +41,7 @@ $(function () {
 	$('a.delete').click(function(e){ // if a user clicks on the "delete" image
 	//e.preventDefault(); //prevent the default browser behavior when clicking   
 	var row_id =     $(this).attr('id');
-	var parent =   $(this).parent().parent();
+	var parent =   $(this).parent().parent().parent().parent().parent();
 	//alert(row_id);
 	$('#confirmation_dialog').dialog({ /*Initialising a confirmation dialog box (with  cancel/OK button)*/
 					   
