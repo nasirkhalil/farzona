@@ -487,10 +487,13 @@ class general extends DBAccess
 		
 	}
 	function addProductSize($product_id,$size_id){
+		$post_size = $_POST['product_qty'];
+		// echo "<pre>"; print_r($post_size); die;
 		$data = $this->getAll("size_details WHERE size_id =".$size_id);
 		if( is_array($data) && count($data) > 0 ){
 			foreach($data as $key => $row){
-			   $q = "INSERT INTO product_sizes(product_id,size_id,size_detail_id) VALUES($product_id,$size_id,".$row['id'].")";
+				$quantity = ($post_size[$row['id']]) ? $post_size[$row['id']] : 0;
+			   $q = "INSERT INTO product_sizes(product_id,size_id,size_detail_id,available_quantity) VALUES($product_id,$size_id,".$row['id'].",$quantity)";
 			   $this->CustomModify($q);
 			}
 		}

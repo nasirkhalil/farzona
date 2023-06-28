@@ -253,8 +253,8 @@ $prdtype = $_GET['type']; ?>
                   <div class="col-xs-6 col-md-4">
                     <label>Status</label>
                     <select class="form-control" name="pre_status_prd">
-                      <option value="1">Active</option>
-                      <option value="0">Inactive</option>
+                      <option value="1">Live</option>
+                      <option value="0">Pause</option>
                     </select>
                   </div>
 

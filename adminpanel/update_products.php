@@ -109,11 +109,11 @@ $data = $general->getSingdet(" product_prd where id_prd = " . $_GET['id']);
                     <input type="text" class="form-control" name="upd_metadescription_prd" value="<?= $data[0]['metadescription_prd'] ?>" />
                   </div>
 
-                  <div class="col-xs-4">
+                 <!--  <div class="col-xs-4">
                     <label>Location</label>
                     <input type="text" class="form-control" name="upd_location_prd" value="<?= $data[0]['location_prd'] ?>" />
                   </div>
-                  <!-- <div class="col-xs-4">
+                  <div class="col-xs-4">
                     <label>Type</label>
                     <input type="text" class="form-control" name="upd_type_prd" value="<?= $data[0]['type_prd'] ?>" />
                   </div> -->
@@ -174,8 +174,8 @@ $data = $general->getSingdet(" product_prd where id_prd = " . $_GET['id']);
                   <div class="col-xs-4">
                     <label>Status</label>
                     <select class="form-control" name="upd_status_prd">
-                      <option value="1" <? if ($data[0]['status_prd'] == 1) echo 'selected'; ?>>Active</option>
-                      <option value="0" <? if ($data[0]['status_prd'] == 0) echo 'selected'; ?>>Inactive</option>
+                      <option value="1" <? if ($data[0]['status_prd'] == 1) echo 'selected'; ?>>Live</option>
+                      <option value="0" <? if ($data[0]['status_prd'] == 0) echo 'selected'; ?>>Pause</option>
                     </select>
                   </div>
 
