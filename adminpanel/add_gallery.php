@@ -116,9 +116,9 @@ if(is_array($photographers)){ ?>
       <?php include "inc_footer.php"; ?>
     </div><!-- ./wrapper -->
     <?php include "inc_scripts.php"; ?>
-<link href="<?=$conf->site_url?>multiuploader/css/uploadfilemulti.css" rel="stylesheet">
+<link href="<?=$conf->admin_url?>multiuploader/css/uploadfilemulti.css" rel="stylesheet">
     
-<script src="<?=$conf->site_url?>multiuploader/js/jquery.fileuploadmulti.min.js"></script>
+<script src="<?=$conf->admin_url?>multiuploader/js/jquery.fileuploadmulti.min.js"></script>
     
 <script>
 var allimgs="";
@@ -128,7 +128,7 @@ $('.my_mask').click(function(e) {
     $(this).hide();
 });
 var settings = {
-	url: "<?=$conf->site_url?>multiuploader/uploadgallery.php",
+	url: "<?=$conf->admin_url?>multiuploader/uploadgallery.php",
 	method: "POST",
 	allowedTypes:"jpg,png,gif,doc,pdf,zip",
 	fileName: "myfile",
@@ -136,7 +136,7 @@ var settings = {
 	onSuccess:function(files,data,xhr)
 	{		
 		$("#status").html("");
-		$("#piclist").append("<div id='a_"+$.trim(data)+"'><span width='200'><img src='<?=$conf->site_url.$conf->gallery_dir?>"+$.trim(data)+"' width='100' height='100' /><br />"+$.trim(data)+"<div class='delit'><img src='../multiuploader/upload-cancel.png'/></div></span><input type='hidden' name='modpics[]' value='"+$.trim(data)+"' /><input type='text' class='form-control' name='caption[]' placeholder='Caption' /><br /><input type='text' name='alt[]' class='form-control' placeholder='Image Alt' /><br /><input type='text' name='title[]' class='form-control' placeholder='Image Title' /><br /><input type='text' class='form-control' name='order[]' placeholder='Order' /><br /></div>");	
+		$("#piclist").append("<div id='a_"+$.trim(data)+"'><span width='200'><img src='<?=$conf->site_url.$conf->gallery_dir?>"+$.trim(data)+"' width='100' height='100' /><br />"+$.trim(data)+"<div class='delit'><img src='multiuploader/upload-cancel.png'/></div></span><input type='hidden' name='modpics[]' value='"+$.trim(data)+"' /><input type='text' class='form-control' name='caption[]' placeholder='Caption' /><br /><input type='text' name='alt[]' class='form-control' placeholder='Image Alt' /><br /><input type='text' name='title[]' class='form-control' placeholder='Image Title' /><br /><input type='text' class='form-control' name='order[]' placeholder='Order' /><br /></div>");	
 		allimgs += $.trim(data)+",";
 		$('.upload-statusbar').fadeOut('slow');
 		$('.my_mask').fadeOut('slow');
@@ -161,7 +161,7 @@ $("body").on("click",".delit", function(sds){
 		
 	var obj = $(this).parent(['span']);
 	
-	$.post("../multiuploader/delpics.php",{ pic: pic, path:'<?=$conf->absolute_path.$conf->gallery_dir?>' }, function(data) {
+	$.post("multiuploader/delpics.php",{ pic: pic, path:'<?=$conf->absolute_path.$conf->gallery_dir?>' }, function(data) {
 		if(data!=""){
 			var b = $('div[id="a_'+pic+'"]');
 			b.empty();

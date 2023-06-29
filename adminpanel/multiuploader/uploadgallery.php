@@ -1,4 +1,4 @@
-<?php include "../dbcon-ajax.php";
+<?php include "../../dbcon-ajax.php";
 //If directory doesnot exists create it.
 
 if(isset($_FILES["myfile"]))
