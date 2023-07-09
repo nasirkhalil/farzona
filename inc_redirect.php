@@ -22,7 +22,6 @@ elseif($page!=''){
 		$pagedetails = $general->getSingdet("link_lk where LOWER(links_lk) = '".$page."'");
         $meta = $general->get_metathings($pagedetails[0]['table_lk'],$pagedetails[0]['idtab_lk']);
 		if($pagedetails[0]['table_lk']=="content_cms"){
-				//echo $pagedetails[0]['idtab_lk']; die();
 			if($pagedetails[0]['idtab_lk']==8){
 					include "contactus.php";
 				exit();
@@ -67,7 +66,7 @@ elseif($page!=''){
 				
 				
 				
-				include "listing.php";
+				include "zz_module/product/product_listing.php";
 				exit();
 			//}
 			
@@ -77,7 +76,7 @@ elseif($page!=''){
 	
 		elseif($pagedetails[0]['table_lk']=="product_prd"){
 			
-			include "detail.php";
+			include "zz_module/product/product_detail.php";
 			exit();
 			
 		}

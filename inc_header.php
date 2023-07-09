@@ -1,86 +1,70 @@
-<? $nav=$general->getAll("content_cms where parent_cms=0 and origin_cms='menu' order by id_cms"); //print_r($nav); die();?>
-<div class="header">
-	<div class="container">
-
-			<nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="<?=$conf->site_url?>"><img src="<?=$conf->site_url?>images/logo.png" alt="" class="img-fluid"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
-     
-      <li class="nav-item active"><a class="nav-link" href="<?=$conf->site_url?>"><?=$nav[0]['name_cms']?></a></li>
-      <? $seabout = $general->getAll("content_cms where parent_cms='".$nav[1]['id_cms']."' and status_cms=1 order by order_cms");?>
-      <? if(is_array($seabout)){?>
-      
-         <li class="nav-item dropdown">
-       <!-- <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          About Us
-        </a>-->
-        <a class="nav-link dropdown-toggle" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[1]['id_cms'])?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?=$nav[1]['name_cms']?>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <? for($s=0;$s<count($seabout);$s++){?>
-          <a class="dropdown-item" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$seabout[$s]['id_cms'])?>"><?=$seabout[$s]['name_cms']?></a>
-          <? }?>
-          <!--<a class="dropdown-item" href="#">Introduction</a>
-          <a class="dropdown-item" href="#">Organization Chart</a>
-          <a class="dropdown-item" href="#">Our Team</a>-->
-        </div>
-      </li>
-      <? } else {?>
-      <li class="nav-item"><a class="nav-link" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[1]['id_cms'])?>"><?=$nav[1]['name_cms']?></a></li>
-      <? }?>
-      <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Services
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Architectural Services</a>
-          <a class="dropdown-item" href="#">Pre- Contractact Services</a>
-          <a class="dropdown-item" href="#">Post Contract Services</a>
-        </div>
-      </li>-->
-      <? $servc = $general->getAll("content_cms where parent_cms='".$nav[2]['id_cms']."' and status_cms=1 order by order_cms");?>
-      <? if(is_array($servc)){?>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[2]['id_cms'])?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?=$nav[2]['name_cms']?>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <? for($s=0;$s<count($servc);$s++){?>
-          <a class="dropdown-item" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$servc[$s]['id_cms'])?>"><?=$servc[$s]['name_cms']?></a>
-          <? }?>
-        </div>
-      </li>
-      
-      <? } else {?>
-      <li class="nav-item"><a class="nav-link" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[2]['id_cms'])?>"><?=$nav[2]['name_cms']?></a></li>
-      <? }?>
- <? $prodcat = $general->getAll("category_cat where status_cat=1 order by order_cat");?>
-<? if(is_array($prodcat)){?>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[3]['id_cms'])?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?=$nav[3]['name_cms']?>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <? for($s=0;$s<count($prodcat);$s++){?>
-          <a class="dropdown-item" href="<?=$conf->site_url.$general->smartURLnew2("category_cat",$prodcat[$s]['id_cat'])?>"><?=$prodcat[$s]['name_cat']?></a>
-          <? }?>
-        </div>
-      </li>
-      
-      <? } else {?>
-      <li class="nav-item"><a class="nav-link" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[3]['id_cms'])?>"><?=$nav[3]['name_cms']?></a></li>
-      <? }?>
-
-       
-          <li class="nav-item"><a class="nav-link" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[4]['id_cms'])?>"><?=$nav[4]['name_cms']?></a></li>
-           <li class="nav-item"><a class="nav-link" href="<?=$conf->site_url.$general->smartURLnew2("content_cms",$nav[5]['id_cms'])?>"><?=$nav[5]['name_cms']?></a></li>
-    </ul>
-  </div>
-</nav>
-	</div><!--END OF CONTAINER-->
-</div>
+   <? $categories = $general->CustomQuery(" SELECT category_cat.name_cat,category_cat.id_cat,link_lk.links_lk AS link FROM category_cat
+                                    JOIN link_lk ON link_lk.idtab_lk = category_cat.id_cat AND table_lk = 'category_cat'
+                                    WHERE parent_cat = 0 AND status_cat = 1"); ?> 
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <? foreach( $categories as $category ){ ?>
+                              <li><a href="<?=$conf->site_url.$category['link']?>"><?=$category['name_cat']?></a>
+                                  <? $sub_category =  $general->CustomQuery(" SELECT category_cat.name_cat,category_cat.id_cat,link_lk.links_lk AS link FROM category_cat
+                                    JOIN link_lk ON link_lk.idtab_lk = category_cat.id_cat AND table_lk = 'category_cat'
+                                    WHERE status_cat = 1 AND parent_cat = ".$category['id_cat']);
+                                    if( is_array($sub_category) && count($sub_category) > 0 ){
+                                      echo '<ul class="dropdown">';
+                                      foreach( $sub_category as $scategory ){ ?>
+                                         <li><a href="<?=$conf->site_url.$scategory['link']?>"><?=$scategory['name_cat']?></a></li>
+                                  <?  }
+                                      echo "</ul>";
+                                    } ?>
+                              </li>
+                            <? } ?>
+                            <!-- <li><a href="#">Women’s</a></li>
+                            <li><a href="#">Men’s</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./product-details.html">Product Details</a></li>
+                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./checkout.html">Checkout</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li> -->
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                            <a href="#">Login</a>
+                            <a href="#">Register</a>
+                        </div>
+                        <ul class="header__right__widget">
+                            <li><span class="icon_search search-switch"></span></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
