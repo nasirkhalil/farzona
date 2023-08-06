@@ -25,8 +25,8 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+            <a href="<?=$conf->site_url?>login">Login</a>
+            <a href="<?=$conf->site_url?>register">Register</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->

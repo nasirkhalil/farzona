@@ -299,7 +299,7 @@ include "inc_head.php"; ?>
     var product_id = <?= $product['id_prd'] ?>;
 
     $(document).on('click', '.product_size', function() {
-      alert("product id is=" + product_id);
+      // alert("product id is=" + product_id);
       product_size_id = $('input[name="product_size"]:checked').val();
       $(this).addClass('active');
       $('.size_error').html('');

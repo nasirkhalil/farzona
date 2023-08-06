@@ -22,35 +22,19 @@ elseif($page!=''){
 		$pagedetails = $general->getSingdet("link_lk where LOWER(links_lk) = '".$page."'");
         $meta = $general->get_metathings($pagedetails[0]['table_lk'],$pagedetails[0]['idtab_lk']);
 		if($pagedetails[0]['table_lk']=="content_cms"){
-			if($pagedetails[0]['idtab_lk']==8){
-					include "contactus.php";
+			if($pagedetails[0]['idtab_lk']==5){
+				include "zz_module/cart/cart.php";
 				exit();
-			}elseif($pagedetails[0]['idtab_lk']==4){
-					include "category_listing.php";
+			}elseif($pagedetails[0]['idtab_lk']==6){
+				include "zz_module/account/login.php";
 				exit();
 			}elseif($pagedetails[0]['idtab_lk']==7){
-					include "client-listing.php";
+				include "zz_module/account/register.php";
 				exit();
-			}elseif($pagedetails[0]['idtab_lk']==34){
-					include "user_updprofile.php";
+			}elseif( $pagedetails[0]['idtab_lk'] == 8 ){
+				include "zz_module/account/checkout.php";
 				exit();
-			}elseif($pagedetails[0]['idtab_lk']==19){
-					include "searchresult.php";
-				exit();
-			}elseif($pagedetails[0]['idtab_lk']==20){
-					include "site-map.php";
-				exit();
-			}elseif($pagedetails[0]['idtab_lk']==37){
-					include "orderdetails.php";
-				exit();
-			}elseif($pagedetails[0]['idtab_lk']==22){
-					include "search_result.php";
-				exit();
-			}elseif($pagedetails[0]['idtab_lk']==39){
-					include "thankyou.php";
-				exit();
-			}
-			else{
+			}else{
 				include "content.php";
 				exit();
 			}			

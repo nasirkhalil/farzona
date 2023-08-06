@@ -17,11 +17,11 @@ $cart_product_qry  = " cart_details WHERE cart_id = $cart_id AND product_id = $p
 $cart_product_data = $general->getAll($cart_product_qry);
 // die('test dfssdf');
 if( is_array($cart_product_data) && count($cart_product_data) > 0 ){
-
+	die("testing..");
 }else{
 	$product_data = $general->CustomQuery("SELECT color_id,sku,name_prd,thumb_name_prd,price_prd,sale_price,
 																				 (SELECT name FROM colors WHERE id = product_prd.color_id ) AS product_color,
-																				 (SELECT name FROM size_details WHERE id = product_prd.size_id) AS product_size
+																				 (SELECT name FROM size_details WHERE id = $product_size_id) AS product_size
 																			 FROM product_prd WHERE id_prd =".$product_id);
 	$product_data = $product_data[0];
 	// echo "<pre>"; print_r($product_data); die;

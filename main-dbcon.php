@@ -29,7 +29,7 @@ $product = new product();
 $category = new category();
 $_SESSION['curr']="AED";
 //$chkip = $general->checkIP();
-if($chkip){
+if(@$chkip){
 	include("restricted.php");
 	die();
 }
